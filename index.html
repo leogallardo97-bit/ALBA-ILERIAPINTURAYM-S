@@ -85,14 +85,13 @@
         <div class="container" style="max-width: 700px;">
             <div class="contact-form">
                 <h3 style="margin-bottom: 20px; text-align: center;">Solicita Presupuesto Online</h3>
-                <form>
-                    <input type="text" placeholder="Nombre completo" required>
-                    <input type="tel" placeholder="Teléfono de contacto" value="+593 " required>
-                    <input type="email" placeholder="Correo electrónico" value="leogallardo.71@gmail.com" readonly>
-                    <textarea placeholder="Cuéntanos los detalles de tu reforma en Cuenca..." rows="5" required></textarea>
-                    <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">ENVIAR SOLICITUD</button>
-                </form>
-            </div>
+                <form id="whatsapp-form">
+                <input type="text" id="name" placeholder="Nombre completo" required>
+                <input type="tel" id="phone" placeholder="Teléfono de contacto" value="+593 " required>
+                <input type="email" id="email" placeholder="Correo electrónico" value="leogallardo.71@gmail.com" readonly>
+                <textarea id="message" placeholder="Cuéntanos los detalles de tu reforma en Cuenca..." rows="5" required></textarea>
+                <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">ENVIAR SOLICITUD POR WHATSAPP</button>
+            </form>
         </div>
     </section>
 
@@ -125,6 +124,29 @@
     <a href="https://wa.me/593985320330" class="whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script>
+        document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappNumber = "593985320330";
+            
+            const text = `Hola KL GALLARDO, me gustaría solicitar un presupuesto.%0A%0A` +
+                         `*Nombre:* ${name}%0A` +
+                         `*Teléfono:* ${phone}%0A` +
+                         `*Email:* ${email}%0A` +
+                         `*Proyecto:* ${message}`;
+            
+            const url = `https://wa.me/${whatsappNumber}?text=${text}`;
+            
+            window.open(url, '_blank');
+        });
+    </script>
 
 </body>
 </html>
