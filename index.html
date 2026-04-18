@@ -86,15 +86,37 @@
     <section id="contacto" class="contact-section">
         <div class="container" style="max-width: 700px;">
             <div class="contact-form">
-                <h3 style="margin-bottom: 20px; text-align: center;">Solicita Presupuesto Online</h3>
+                <h3 style="margin-bottom: 30px; text-align: center;">Cuestionario de Presupuesto</h3>
                 <form id="whatsapp-form">
-                <input type="text" id="name" placeholder="Nombre completo" required>
-                <input type="tel" id="phone" placeholder="Teléfono de contacto" value="+593 " required>
-                <input type="email" id="email" placeholder="Correo electrónico" value="leogallardo.71@gmail.com" readonly>
-                <textarea id="message" placeholder="Cuéntanos los detalles de tu reforma en Cuenca..." rows="5" required></textarea>
-                <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">ENVIAR SOLICITUD POR WHATSAPP</button>
-            </form>
-        </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <input type="text" id="name" placeholder="Tu Nombre" required style="margin-bottom: 0;">
+                        <input type="tel" id="phone" placeholder="WhatsApp (+593...)" value="+593 " required style="margin-bottom: 0;">
+                    </div>
+                    
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">¿Qué servicio necesita hoy?</label>
+                    <select id="service" required style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 4px; border: none; font-family: inherit;">
+                        <option value="" disabled selected>Seleccione una opción...</option>
+                        <option value="Reforma Integral">Reforma Integral de Vivienda</option>
+                        <option value="Pintura Técnica/Lux">Pintura Técnica o Decorativa</option>
+                        <option value="Albañilería y Demolición">Albañilería / Demolición</option>
+                        <option value="Revestimientos y Pisos">Revestimientos y Pisos</option>
+                    </select>
+
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">¿Cuándo planea iniciar?</label>
+                    <select id="urgency" required style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 4px; border: none; font-family: inherit;">
+                        <option value="Lo antes posible">Quiero empezar lo antes posible</option>
+                        <option value="Próximas semanas">En las próximas semanas</option>
+                        <option value="Solo cotización">Por ahora solo busco cotizar</option>
+                    </select>
+
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Comentarios adicionales o dudas:</label>
+                    <textarea id="message" placeholder="Díganos cualquier detalle que considere valioso..." rows="3" required></textarea>
+                    
+                    <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer; font-size: 1.1rem; padding: 20px;">
+                        OBTENER PRESUPUESTO PERSONALIZADO <i class="fab fa-whatsapp"></i>
+                    </button>
+                </form>
+            </div>
     </section>
 
     <!-- Sección de Mapa e Ubicación -->
@@ -133,16 +155,18 @@
             
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const urgency = document.getElementById('urgency').value;
             const message = document.getElementById('message').value;
             
             const whatsappNumber = "593985320330";
             
-            const text = `Hola KL GALLARDO, me gustaría solicitar un presupuesto.%0A%0A` +
-                         `*Nombre:* ${name}%0A` +
-                         `*Teléfono:* ${phone}%0A` +
-                         `*Email:* ${email}%0A` +
-                         `*Proyecto:* ${message}`;
+            const text = `🛠️ *NUEVA SOLICITUD DE PRESUPUESTO - KL GALLARDO*%0A%0A` +
+                         `👤 *Cliente:* ${name}%0A` +
+                         `📞 *WhatsApp:* ${phone}%0A` +
+                         `🏗️ *Servicio:* ${service}%0A` +
+                         `⏱️ *Urgencia:* ${urgency}%0A%0A` +
+                         `📝 *Comentarios:* ${message}`;
             
             const url = `https://wa.me/${whatsappNumber}?text=${text}`;
             
